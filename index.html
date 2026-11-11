@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora</title>
+  <meta name="description" content="Calculadora científica open source feita com HTML, CSS e JavaScript puro, com histórico, tema escuro e suporte a teclado.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>Calculadora</h1>
+      <div class="topbar-actions">
+        <button type="button" class="chip" id="btn-angle" title="Alternar graus/radianos">DEG</button>
+        <button type="button" class="chip" id="btn-sci" aria-pressed="false">Científica</button>
+        <button type="button" class="chip" id="btn-history" aria-pressed="false" aria-controls="history-panel">Histórico</button>
+        <button type="button" class="chip" id="btn-theme" title="Alternar tema" aria-label="Alternar tema">🌙</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <section class="calculator" aria-label="Calculadora">
+        <div class="display">
+          <button type="button" class="copy-btn" data-action="copy" aria-label="Copiar resultado" title="Copiar resultado">⧉</button>
+          <div id="expression" class="expression" aria-hidden="true">&nbsp;</div>
+          <div id="result" class="result" role="status" aria-live="polite">0</div>
+        </div>
+
+        <div class="keys" id="keys">
+          <div class="grid sci-keys" id="sci-keys" hidden>
+            <button type="button" class="key fn" data-insert="sin(">sin</button>
+            <button type="button" class="key fn" data-insert="cos(">cos</button>
+            <button type="button" class="key fn" data-insert="tan(">tan</button>
+            <button type="button" class="key fn" data-insert="π" aria-label="pi">π</button>
+
+            <button type="button" class="key fn" data-insert="asin(" aria-label="arco seno">sin⁻¹</button>
+            <button type="button" class="key fn" data-insert="acos(" aria-label="arco cosseno">cos⁻¹</button>
+            <button type="button" class="key fn" data-insert="atan(" aria-label="arco tangente">tan⁻¹</button>
+            <button type="button" class="key fn" data-insert="e" aria-label="número de Euler">e</button>
+
+            <button type="button" class="key fn" data-insert="log(" aria-label="logaritmo base 10">log</button>
+            <button type="button" class="key fn" data-insert="ln(" aria-label="logaritmo natural">ln</button>
+            <button type="button" class="key fn" data-insert="√(" aria-label="raiz quadrada">√</button>
+            <button type="button" class="key fn" data-insert="^" aria-label="potência">xʸ</button>
+
+            <button type="button" class="key fn" data-insert="abs(" aria-label="valor absoluto">|x|</button>
+            <button type="button" class="key fn" data-insert="!" aria-label="fatorial">x!</button>
+            <button type="button" class="key fn" data-insert="^2" aria-label="ao quadrado">x²</button>
+            <button type="button" class="key fn" data-action="ans" aria-label="último resultado">ANS</button>
+          </div>
+
+          <div class="grid">
+            <button type="button" class="key danger" data-action="clear" aria-label="Limpar tudo">AC</button>
+            <button type="button" class="key op" data-action="backspace" aria-label="Apagar">⌫</button>
+            <button type="button" class="key op" data-insert="(">(</button>
+            <button type="button" class="key op" data-insert=")">)</button>
+
+            <button type="button" class="key" data-insert="7">7</button>
+            <button type="button" class="key" data-insert="8">8</button>
+            <button type="button" class="key" data-insert="9">9</button>
+            <button type="button" class="key op" data-insert="÷" aria-label="dividir">÷</button>
+
+            <button type="button" class="key" data-insert="4">4</button>
+            <button type="button" class="key" data-insert="5">5</button>
+            <button type="button" class="key" data-insert="6">6</button>
+            <button type="button" class="key op" data-insert="×" aria-label="multiplicar">×</button>
+
+            <button type="button" class="key" data-insert="1">1</button>
+            <button type="button" class="key" data-insert="2">2</button>
+            <button type="button" class="key" data-insert="3">3</button>
+            <button type="button" class="key op" data-insert="−" aria-label="subtrair">−</button>
+
+            <button type="button" class="key" data-insert="0">0</button>
+            <button type="button" class="key" data-insert="," aria-label="vírgula">,</button>
+            <button type="button" class="key op" data-insert="%" aria-label="porcentagem">%</button>
+            <button type="button" class="key op" data-insert="+" aria-label="somar">+</button>
+
+            <button type="button" class="key equals" data-action="equals" aria-label="Igual">=</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="history" id="history-panel" aria-label="Histórico de cálculos" hidden>
+        <div class="history-head">
+          <h2>Histórico</h2>
+          <button type="button" class="link-btn" id="btn-clear-history">Limpar</button>
+        </div>
+        <ol class="history-list" id="history-list"></ol>
+      </aside>
+    </div>
+
+    <footer class="footer">
+      <p>
+        Open source (MIT) ·
+        <a href="https://github.com/Carvalhoblack" target="_blank" rel="noopener noreferrer">Código no GitHub</a>
+      </p>
+      <p class="hint">Dica: use o teclado. Enter calcula, Esc limpa e Backspace apaga.</p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>Esta calculadora precisa de JavaScript para funcionar.</noscript>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

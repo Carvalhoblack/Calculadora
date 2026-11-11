@@ -1,0 +1,15 @@
+{
+  "name": "calculadora-web",
+  "version": "1.0.0",
+  "description": "Calculadora científica open source em HTML, CSS e JavaScript puro, sem dependências.",
+  "main": "engine.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "npx --yes serve ."
+  },
+  "keywords": ["calculadora", "calculator", "javascript", "html", "css", "open-source"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
